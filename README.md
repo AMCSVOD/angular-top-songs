@@ -10,7 +10,7 @@ We value a sense of ownership, so if you'd prefer to swap out NPM for Bower/Yarn
 We set up a basic start for you in this repo, so feel free to clone/fork.
  
 ##Instructions
-Our users, aside from loving out video streaming apps, are a big fan of music streaming.
+Our users, aside from loving our video streaming apps, are a big fan of music streaming.
 
 We'd like you to make them a SPA (Single Page Application) where they can make a top 10 list.
 
