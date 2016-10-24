@@ -42,3 +42,7 @@ As a user, I should be able to:
 
  - Use Angular 1.x
  - When complete, deliver a publicly facing URL displaying your work and a link to it's corresponding the GitHub Repo.
+ - You may use any method you want for song data, but we'd recommend one of the following
+    - [The Angular Spotify Service](https://github.com/eddiemoore/angular-spotify)
+    - [The Spotify Web API](https://developer.spotify.com/web-api/user-guide/)
+    - [One of Spotify's sponsered Web API Wrappers](https://developer.spotify.com/web-api/code-examples/)
