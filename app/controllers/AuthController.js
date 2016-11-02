@@ -2,8 +2,9 @@
  * Created by Mtui on 11/1/16.
  */
 "use strict";
+
 (function() {
-    angular.module("MusicApp").controller("AuthController", ["$scope", "$location", "$route", function($scope, $location, $route) {
+    angular.module("MusicApp").controller("AuthController", ["$scope", "$location",   function($scope, $location) {
         $scope.submit = function() {
             if($scope.user.name === "suri" && $scope.user.password === "suri") {
                $location.path("/home");
@@ -12,7 +13,7 @@
                 el.textContent = "\"suri\" is the Key";
             }                
         }
-    }])
+    }]);
 })();
 
 

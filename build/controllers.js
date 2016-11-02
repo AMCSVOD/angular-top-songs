@@ -2,18 +2,18 @@
  * Created by Mtui on 11/1/16.
  */
 "use strict";
+
 (function() {
-    angular.module("MusicApp").controller("AuthController", ["$scope", "$location", "$route", function($scope, $location, $route) {
+    angular.module("MusicApp").controller("AuthController", ["$scope", "$location",   function($scope, $location) {
         $scope.submit = function() {
             if($scope.user.name === "suri" && $scope.user.password === "suri") {
                $location.path("/home");
-
             } else {
                 var el = document.getElementsByClassName("message error")[0];
                 el.textContent = "\"suri\" is the Key";
             }                
         }
-    }])
+    }]);
 })();
 
 
@@ -26,7 +26,15 @@
 "use strict";
 
 (function() {
-    angular.module("MusicApp").controller("HomeController", ["$scope", function($scope) {
+    angular.module("MusicApp").controller("HomeController", ["$scope", "Spotify", function($scope, Spotify) {
+
+        $scope.submit = function() {
+            var searchTerm = $scope.searchTerm;
+            if(searchTerm !== '') {
+               debugger;
+            }
+
+        }
 
     }]);
 })();

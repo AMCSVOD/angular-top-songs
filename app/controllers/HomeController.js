@@ -5,7 +5,15 @@
 "use strict";
 
 (function() {
-    angular.module("MusicApp").controller("HomeController", ["$scope", function($scope) {
+    angular.module("MusicApp").controller("HomeController", ["$scope", "Spotify", function($scope, Spotify) {
+
+        $scope.submit = function() {
+            var searchTerm = $scope.searchTerm;
+            if(searchTerm !== '') {
+               debugger;
+            }
+
+        }
 
     }]);
 })();

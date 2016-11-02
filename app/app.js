@@ -1,19 +1,18 @@
 "use strict";
 
-var app = angular.module('MusicApp', ['ngRoute']);
+var app = angular.module('MusicApp', ['ngRoute', 'spotify']);
 
-app.controller("MusicController", function($scope, $route) {
-    //Mock User DB
-    $scope.$route = $route;
+app.controller("MusicController", function($scope) {
+
 })
 
 app.config(function($routeProvider) {
     $routeProvider
-        .when('/',{
+        .when('/', {
             templateUrl: 'app/views/AuthView.html',
             controller: 'AuthController'
         })
-        .when('/home',{
+        .when('/home', {
             templateUrl: 'app/views/HomeView.html',
             controller: 'HomeController'
         })

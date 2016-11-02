@@ -1,6 +1,16 @@
-<div class="panel-heading">
-    <div class="panel-title text-center">
-        <h1 class="title">Music App</h1>
-        <hr />
+<div class="container">
+    <div class="row main">
+        <div class="panel-heading">
+            <div class="panel-title text-center">
+                <h1 class="title">Music App</h1>
+                <hr />
+            </div>
+        </div>
+        <div class="span12">
+            <form class="form-inline" >
+                <input  ng-model="searchTerm" class="span5" type="text"  placeholder="Michael Jackson" >
+                <button ng-click="submit();" type="submit" class="btn btn-primary"> <i class="icon-search icon-white"></i></button>
+            </form>
+        </div>
     </div>
 </div>
