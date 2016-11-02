@@ -3,10 +3,10 @@
  */
 "use strict";
 (function() {
-    angular.module("MusicApp").controller("AuthController", ["$scope", "$window", "$document", function($scope, $window, $document) {
+    angular.module("MusicApp").controller("AuthController", ["$scope", "$location", "$route", function($scope, $location, $route) {
         $scope.submit = function() {
             if($scope.user.name === "suri" && $scope.user.password === "suri") {
-                $window.location.href = "/home";  
+               $location.path("/home");
             } else {
                 var el = document.getElementsByClassName("message error")[0];
                 el.textContent = "\"suri\" is the Key";

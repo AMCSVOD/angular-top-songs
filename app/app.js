@@ -2,8 +2,9 @@
 
 var app = angular.module('MusicApp', ['ngRoute']);
 
-app.controller("MusicController", function($scope) {
+app.controller("MusicController", function($scope, $route) {
     //Mock User DB
+    $scope.$route = $route;
 })
 
 app.config(function($routeProvider) {
