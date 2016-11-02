@@ -25,3 +25,8 @@
 .right-padding {
     padding-right: 3px;
 }
+
+.user {
+    float: left;
+    margin-top: -15px;
+}

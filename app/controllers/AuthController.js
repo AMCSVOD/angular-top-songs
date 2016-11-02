@@ -4,13 +4,14 @@
 "use strict";
 
 (function() {
-    angular.module("MusicApp").controller("AuthController", ["$scope", "$location",   function($scope, $location) {
+    angular.module("MusicApp").controller("AuthController", ["$scope", "$location", "$rootScope", "Configs",  function($scope, $location, $rootScope, Configs) {
         $scope.submit = function() {
-            if($scope.user.name === "suri" && $scope.user.password === "suri") {
-               $location.path("/home");
+            if($scope.user.name === Configs.USER && $scope.user.password === Configs.PASSWORD) {
+                $rootScope.user = $scope.user;
+                $location.path("/home");
             } else {
                 var el = document.getElementsByClassName("message error")[0];
-                el.textContent = "\"suri\" is the Key";
+                el.textContent = "\""+Configs.PASSWORD+"\" is the key!";
             }                
         }
     }]);

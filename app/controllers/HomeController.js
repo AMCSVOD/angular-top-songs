@@ -5,34 +5,26 @@
 "use strict";
 
 (function() {
-    angular.module("MusicApp").controller("HomeController", ["$scope", "Spotify", function($scope, Spotify) {
+    angular.module("MusicApp").controller("HomeController", ["$scope", "Spotify", "$rootScope", "$window", "Configs", function($scope, Spotify, $rootScope, Configs, $window) {
+
+        var displayData = null;
+
+        if ($rootScope.user === undefined) {
+            window.location.href = "/";
+        }
 
         $scope.submit = function() {
             var searchTerm = $scope.searchTerm;
 
             if(searchTerm !== '') {
-
-
+                Spotify.search(searchTerm, getType()).then(function (data) {
+                    console.log(data);
+                });
             }
-        }
+        };
 
         function getType() {
-            var searchType = document.getElementById("searchType");
-
-            switch(searchType) {
-                case "Song":
-                    //logic
-
-                    break;
-                case "Album":
-                    //logic
-
-                    break;
-                case "Artist":
-                    //logic
-                    
-                    break;
-            }
+            return document.getElementById("searchType").value;
         }
 
     }]);
