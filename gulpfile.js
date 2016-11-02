@@ -10,10 +10,10 @@ gulp.task("concat-controllers", function() {
         .pipe(gulp.dest('./build'));
 });
 
-gulp.task("concat-services", function() {
+/*gulp.task("concat-services", function() {
     return gulp.src('./app/services/*.js')
         .pipe(concat('services.js'))
         .pipe(gulp.dest('./build'));
-});
+});*/
 
-gulp.task("default", ["concat-controllers", "concat-services"], function(){});
+gulp.task("default", ["concat-controllers"]);

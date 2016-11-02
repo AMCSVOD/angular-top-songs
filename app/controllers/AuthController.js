@@ -3,7 +3,7 @@
  */
 "use strict";
 (function() {
-    angular.module("MusicApp").controller("AuthController", ["$scope", function($scope) {
+    angular.module("MusicApp").controller("AuthController", ["$scope", "$http", function($scope) {
 
     }])
 })();

@@ -3,7 +3,8 @@
 var app = angular.module('MusicApp', ['ngRoute']);
 
 app.controller("MusicController", function($scope) {
-    
+    //Mock User DB
+    $scope.users = [];
 })
 
 app.config(function($routeProvider) {
