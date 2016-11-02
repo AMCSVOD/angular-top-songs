@@ -4,7 +4,6 @@ var app = angular.module('MusicApp', ['ngRoute']);
 
 app.controller("MusicController", function($scope) {
     //Mock User DB
-    $scope.users = [];
 })
 
 app.config(function($routeProvider) {
@@ -13,8 +12,9 @@ app.config(function($routeProvider) {
             templateUrl: 'app/views/AuthView.html',
             controller: 'AuthController'
         })
-        .when('/test',{
-            template: '<h1>Test</h1><a href="#/">Back</a>'
+        .when('/home',{
+            templateUrl: 'app/views/HomeView.html',
+            controller: 'HomeController'
         })
         .otherwise({
             template: '<h1>Not Found</h1>'
