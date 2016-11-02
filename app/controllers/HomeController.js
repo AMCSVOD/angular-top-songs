@@ -9,10 +9,30 @@
 
         $scope.submit = function() {
             var searchTerm = $scope.searchTerm;
-            if(searchTerm !== '') {
-               debugger;
-            }
 
+            if(searchTerm !== '') {
+
+
+            }
+        }
+
+        function getType() {
+            var searchType = document.getElementById("searchType");
+
+            switch(searchType) {
+                case "Song":
+                    //logic
+
+                    break;
+                case "Album":
+                    //logic
+
+                    break;
+                case "Artist":
+                    //logic
+                    
+                    break;
+            }
         }
 
     }]);

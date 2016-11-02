@@ -31,7 +31,10 @@
         $scope.submit = function() {
             var searchTerm = $scope.searchTerm;
             if(searchTerm !== '') {
-               debugger;
+                debugger;
+                switch($scope.searchType){
+
+                }
             }
 
         }

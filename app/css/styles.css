@@ -1,3 +1,4 @@
+
 .login-container {
     max-width: 300px;
 }
@@ -9,4 +10,18 @@
 .message {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: medium;
+}
+
+.searchbox {
+    display: inline-flex;
+    padding-right: 5px;
+}
+
+.searchbox select {
+    top: -5px;
+    position: relative;
+}
+
+.right-padding {
+    padding-right: 3px;
 }
