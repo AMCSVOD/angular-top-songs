@@ -21,5 +21,9 @@
     "angular-route": "^1.5.8",
     "angular-spotify": "^1.4.1",
     "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0"
   }
 }
