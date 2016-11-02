@@ -30,3 +30,7 @@
     float: left;
     margin-top: -15px;
 }
+
+.data-display {
+    font-weight: bolder;
+}

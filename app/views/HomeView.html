@@ -24,8 +24,19 @@
                 </form>
             </div>
         </div>
+
         <div class="results">
-            <ul ng-repeat="displayData"></ul>
+
+
+
+
+            <ul class="list-group">
+                <li ng-repeat="item in displayData" class="list-group-item">
+                    <button type="button" class="list-group-item" ng-click="itemClickHandler(item)">Song: <span class="data-display">{{item.name}}</span> Artist:
+                        <span class="data-display">{{item.finalArtists}}</span></button>
+
+                </li>
+            </ul>
         </div>
 
     </div>
