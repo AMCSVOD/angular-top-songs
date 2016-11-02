@@ -1,13 +1,22 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html ng-app="MusicApp">
+
 <head>
-  <meta charset="utf-8">
-  <title>Angular Top Songs</title>
-  <script src="node_modules/angular/angular.js"></script>
+    <meta charset="utf-8" />
+    <title>Angular Top Songs</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <link rel="stylesheet" href="app/css/bootstrap.css" />
+    <link rel="stylesheet" href="app/css/styles.css"/>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular/angular-route.js"></script>
+    <script src="app/js/jquery-3.0.0.min.js"></script>
+    <script src="app/js/bootstrap.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.8/angular-route.js"></script>
+    <script src="app/app.js"></script>
 </head>
+
 <body>
-
-<h1>Nothing here {{'yet' + '!'}}</h1>
-
+    <ng-view></ng-view>
 </body>
+
 </html>

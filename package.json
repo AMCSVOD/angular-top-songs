@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/AMCSVOD/angular-top-songs#readme",
   "dependencies": {
-    "angular": "^1.5.8"
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "angular-spotify": "^1.4.1",
+    "bootstrap": "^3.3.7"
   }
 }
