@@ -2,20 +2,30 @@
 (function(){
     angular.module("MusicApp").service("PlaylistService", function(){
         var playlistItem;
+        var playlistJson;
 
-        var getCurrentItem = function() {
+        const getCurrentItem = function() {
             return playlistItem;
         }
 
-        var setCurrentItem = function(item) {
+        const getExportJson = function() {
+            return playlistJson;
+        }
+
+        const setCurrentItem = function(item) {
             playlistItem = item;
+        }
+
+        const setExportJson = function(json) {
+            playlistJson = json;
         }
 
         return {
             getCurrentItem: getCurrentItem,
-            setCurrentItem: setCurrentItem
+            setCurrentItem: setCurrentItem,
+            setExportJson: setExportJson,
+            getExportJson: getExportJson
         }
-
     })
     
 })();

@@ -31,13 +31,15 @@
 
         <div class="results">
             <div id="playlist" ng-show="showPlaylist">
+                <button id="export" class="btn btn-default" type="button" aria-label="Export" ng-click="exportJson();" >Export</button>
                 <label class="label label-primary">{{playlistName}} <span class="badge">{{playlist.length}}</span></label>
                 <hr />
                 <ul class="list-group">
                     <li ng-repeat="item in playlist" class="list-group-item">
                         <div class="playlist-item">
                             <label class="label label-primary">{{item.name}}</label>
-                            <img src={{item.album.images[2].url}}>
+                            <img src={{item.imageUrl}}>
+                            <label>{{item.note}}</label>
                         </div>
                     </li>
                 </ul>
@@ -105,6 +107,22 @@
         <input ng-model="track.image" type="text" class="form-control" placeholder={{currentItem.album.images[0].url}} >
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addToPlaylistHandler();">Add</button>
+        </div>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="exportModal.html">
+    <div class="modal-content large">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="closeErrorModal();">&times;</button>
+            <h3 class="modal-title">Json Export</h3>
+        </div>
+        <div class="modal-body">
+            {{playlistJson}} Here
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal();">Close</button>
         </div>
     </div>
 </script>

@@ -13,9 +13,8 @@
             window.location.href = "/";
         }
 
-        const MAX_PLAYLIST = 10;
         var type = null;
-            
+
         $scope.currentSelectedItem = null;
         $scope.displayData = [];
         $scope.playlist = [];
@@ -48,7 +47,7 @@
            $scope.resetPlaylist();
             $scope.showPlaylist = true;
         }
-        
+
         $scope.resetPlaylist = function() {
             $scope.playlist = [];
             $scope.showPlaylist = false;
@@ -69,16 +68,54 @@
             tempArray = null;
         }
 
+        $scope.exportJson = function() {
+
+            var json = {
+                title: $scope.playlistName,
+                songs: getSongs()
+            };
+
+            //showExportModal(Json.stringify(json));
+            PlaylistService.setExportJson(json);
+            showExportModal();
+        }
+
         $rootScope.$on("updatePlaylist", function() {
             updatePlaylistFromModal();
         });
+
+        function getSongs() {
+            var songs = [];
+            $scope.playlist.forEach(function(song) {
+                var o = {
+                    track: song.name,
+                    artist: song.allArtists,
+                    album: song.album.name,
+                    note: song.note,
+                    customImage: song.imageUrl
+                }
+                songs.push(o);
+            })
+
+            return songs;
+        }
 
         function updatePlaylistFromModal() {
           $scope.playlist.push(PlaylistService.getCurrentItem());
         }
 
+        function showExportModal() {
+            $rootScope.modalInstance = $uibModal.open({
+                animation: true,
+                ariaLabelledBy: 'modal-title-top',
+                ariaDescribedBy: 'modal-body-top',
+                templateUrl: 'exportModal.html',
+                controller: 'ModalController',
+                size: 'lg'
+            });
+        }
+
         function addSongToPlaylist() {
-            console.log("currentSelected:"+ $scope.currentSelectedItem);
 
             $rootScope.modalInstance = $uibModal.open({
                 animation: true,

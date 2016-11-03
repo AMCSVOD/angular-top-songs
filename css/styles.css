@@ -66,4 +66,9 @@
 .playlist-item img{
     width: 64px;
     height: 64px;
+    float: right;
+}
+
+#export {
+    float: right;
 }
