@@ -142,11 +142,17 @@
             var tempData = data[type+'s'].items;
 
             tempData.forEach(function(tempItem) {
-                var names = Array.prototype.map.call(tempItem.artists, function(artist) {
-                    return artist.name;
-                });
 
-                tempItem.allArtists = names.join(", ");
+                if(type !== "artist") {
+                    var names = Array.prototype.map.call(tempItem.artists, function(artist) {
+                        return artist.name;
+                    });
+
+                    tempItem.allArtists = names.join(", ");
+                    
+                } else {
+                    tempItem.allArtists = tempItem.name;
+                }
             });
 
             $scope.displayData = tempData;

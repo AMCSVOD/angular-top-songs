@@ -17,7 +17,7 @@ gulp.task("concat-services", function() {
 });
 
 gulp.task("watch", ["concat-controllers"], function() {
-    gulp.watch(['./app/controllers/*.js', './app/services/*.js'], ["concat-controllers"]);
+    gulp.watch(['./app/controllers/*.js', './app/services/*.js'], ["concat-controllers", "concat-services"]);
 })
 
 gulp.task("default", ["concat-controllers", "concat-services", "watch"]);
