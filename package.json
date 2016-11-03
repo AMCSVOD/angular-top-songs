@@ -23,9 +23,12 @@
     "bootstrap": "^3.3.7"
   },
   "devDependencies": {
+    "angular-animate": "^1.5.8",
+    "angular-ui-bootstrap": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-watch": "^4.3.10",
+    "ng-dialog": "^0.6.4",
     "run-sequence": "^1.2.2"
   }
 }

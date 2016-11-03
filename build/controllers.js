@@ -4,7 +4,10 @@
 "use strict";
 
 (function() {
-    angular.module("MusicApp").controller("AuthController", ["$scope", "$location", "$rootScope", "Configs",  function($scope, $location, $rootScope, Configs) {
+    angular.module("MusicApp").controller(
+        "AuthController",
+        ["$scope", "$location", "$rootScope", "Configs", function($scope, $location, $rootScope, Configs) {
+                
         $scope.submit = function() {
             if($scope.user.name === Configs.USER && $scope.user.password === Configs.PASSWORD) {
                 $rootScope.user = $scope.user;
@@ -14,6 +17,7 @@
                 el.textContent = "\""+Configs.PASSWORD+"\" is the key!";
             }                
         }
+                
     }]);
 })();
 
@@ -27,19 +31,31 @@
 "use strict";
 
 (function() {
-    angular.module("MusicApp").controller("HomeController", ["$scope", "Spotify", "$rootScope", function($scope, Spotify, $rootScope) {
+    angular.module("MusicApp").controller(
+        "HomeController",
+        ["$scope", "Spotify", "$rootScope", "$uibModal", "PlaylistService", function($scope, Spotify, $rootScope, $uibModal, PlaylistService) {
 
         if ($rootScope.user === undefined) {
             window.location.href = "/";
         }
 
+        const MAX_PLAYLIST = 10;
         var type = null;
-
+            
+        $scope.currentSelectedItem = null;
         $scope.displayData = [];
         $scope.playlist = [];
+        $scope.playlistName = "";
+        $scope.showPlaylist =  false;
 
         $scope.itemClickHandler = function(item) {
-            debugger;
+            if(!$scope.showPlaylist) {
+                showErrorModal();
+            } else {
+                $scope.currentSelectedItem = item;
+                PlaylistService.setCurrentItem(item);
+                addSongToPlaylist();
+            }
         }
 
         $scope.submit = function() {
@@ -54,6 +70,63 @@
             }
         };
 
+        $scope.newPlaylist = function() {
+           $scope.resetPlaylist();
+            $scope.showPlaylist = true;
+        }
+        
+        $scope.resetPlaylist = function() {
+            $scope.playlist = [];
+            $scope.showPlaylist = false;
+        }
+
+        $scope.closeErrorModal = function() {
+            $rootScope.modalInstance.close();
+        }
+
+        $scope.removeItem = function(item) {
+            var tempArray = [];
+            for(var i = 0; i < $scope.playlist.length; i++) {
+                if(item.uri !== $scope.playlist.uri)
+                    tempArray[i] = $scope.playlist[i];
+            }
+
+            $scope.playlist = tempArray;
+            tempArray = null;
+        }
+
+        $rootScope.$on("updatePlaylist", function() {
+            updatePlaylistFromModal();
+        });
+
+        function updatePlaylistFromModal() {
+          $scope.playlist.push(PlaylistService.getCurrentItem());
+        }
+
+        function addSongToPlaylist() {
+            console.log("currentSelected:"+ $scope.currentSelectedItem);
+
+            $rootScope.modalInstance = $uibModal.open({
+                animation: true,
+                ariaLabelledBy: 'modal-title-top',
+                ariaDescribedBy: 'modal-body-top',
+                templateUrl: 'addSong.html',
+                controller: 'ModalController',
+                size: 'lg'
+            });
+        }
+
+        function showErrorModal() {
+            $rootScope.modalInstance = $uibModal.open({
+                animation: true,
+                ariaLabelledBy: 'modal-title-top',
+                ariaDescribedBy: 'modal-body-top',
+                templateUrl: 'errorModal.html',
+                controller: 'HomeController',
+                size: 'lg'
+            });
+        }
+
         function populateView(data) {
             var tempData = data[type+'s'].items;
 
@@ -62,7 +135,7 @@
                     return artist.name;
                 });
 
-                tempItem.finalArtists = names.join(", ");
+                tempItem.allArtists = names.join(", ");
             });
 
             $scope.displayData = tempData;
@@ -72,17 +145,33 @@
             return document.getElementById("searchType").value;
         }
     }]);
+
+    
 })();
 
-/**
- * Created by Mtui on 11/2/16.
- */
 "use strict";
 
 (function() {
-    angular.module("MusicApp").controller("Playlist", ["$scope", "Spotify", "$rootScope", "$window", "Configs", function($scope, Spotify, $rootScope, Configs, $window) {
+    angular.module("MusicApp").controller(
+        "ModalController", function($scope, $rootScope, PlaylistService) {
+            
+            $scope.currentItem = PlaylistService.getCurrentItem();
 
-    }])
+            $scope.addToPlaylistHandler = function() {
+
+                if(PlaylistService.getCurrentItem()) {
+                    $scope.currentItem.note = $scope.track.note;
+                    $scope.currentItem.imageUrl = ($scope.track.image !== "" || $scope.track.image !== undefined) ? $scope.track.image : $scope.currentItem.album.images[2].url;
+                    PlaylistService.setCurrentItem($scope.currentItem);
+                    $rootScope.$broadcast("updatePlaylist");
+                }
+
+                $scope.closeModal();
+            }
+
+            $scope.closeModal = function() {
+                $rootScope.modalInstance.close();
+            }
+        });
+
 })();
-
-

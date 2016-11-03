@@ -4,7 +4,10 @@
 "use strict";
 
 (function() {
-    angular.module("MusicApp").controller("AuthController", ["$scope", "$location", "$rootScope", "Configs",  function($scope, $location, $rootScope, Configs) {
+    angular.module("MusicApp").controller(
+        "AuthController",
+        ["$scope", "$location", "$rootScope", "Configs", function($scope, $location, $rootScope, Configs) {
+                
         $scope.submit = function() {
             if($scope.user.name === Configs.USER && $scope.user.password === Configs.PASSWORD) {
                 $rootScope.user = $scope.user;
@@ -14,6 +17,7 @@
                 el.textContent = "\""+Configs.PASSWORD+"\" is the key!";
             }                
         }
+                
     }]);
 })();
 

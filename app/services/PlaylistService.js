@@ -15,7 +15,6 @@
             getCurrentItem: getCurrentItem,
             setCurrentItem: setCurrentItem
         }
-
     })
     
 })();

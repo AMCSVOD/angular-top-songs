@@ -1,10 +1,6 @@
 "use strict";
 
-var app = angular.module('MusicApp', ['ngRoute', 'spotify']);
-
-app.controller("MusicController", function($scope) {
-
-})
+var app = angular.module('MusicApp', ['ngRoute', 'spotify','ui.bootstrap','ngAnimate']);
 
 app.config(function($routeProvider) {
     $routeProvider

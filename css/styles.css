@@ -17,9 +17,10 @@
     padding-right: 5px;
 }
 
-.searchbox select {
-    top: -5px;
-    position: relative;
+.searchbox  {
+   /* top: -5px;
+    position: relative; */
+    padding: 10px;
 }
 
 .right-padding {
@@ -33,4 +34,36 @@
 
 .data-display {
     font-weight: bolder;
+}
+
+.playlist_btn {
+    float: right;
+    margin-top: -35px;
+}
+
+#playlist {
+    width: 350px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+#playlist label {
+    font-size: 15px;
+    width: 350px;
+}
+
+.song-results {
+    top: 360px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.playlist-count {
+    color: red;
+}
+
+.playlist-item img{
+    width: 64px;
+    height: 64px;
 }
