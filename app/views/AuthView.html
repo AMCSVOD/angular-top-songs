@@ -1,0 +1,21 @@
+<div class="container login-container">
+    <div class="row main">
+        <div class="panel-heading">
+            <div class="panel-title text-center">
+                <h1 class="title">Music App</h1>
+                <hr />
+            </div>
+
+        </div>
+        <div class="wrapper">
+            <form class="form-signin">
+                <h2 class="form-signin-heading">Please login</h2>
+                <input type="text" class="form-control" ng-model="user.name" name="username" placeholder="Email Address" required="" autofocus="" value="suri"/>
+                <input type="password" class="form-control" ng-model="user.password" name="password" placeholder="Password" required="" value="suri"/>
+                <br/>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="submit();">Login</button>
+            </form>
+            <span class="message error"></span>
+        </div>
+    </div>
+</div>

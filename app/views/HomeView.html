@@ -1,0 +1,128 @@
+<div class="container">
+    <div class="row main">
+        <div class="panel-heading">
+            <div class="panel-title text-center">
+                <h1 class="title">Music App</h1>
+                <span class="user">Welcome {{user.name}}</span>
+                <button data-toggle="modal" data-target="#playlist_popup" type="button" class="btn btn-primary playlist_btn" ng-click="newPlaylist();">
+                    <i class="icon-user icon-white"></i> New Playlist
+                </button>
+                <hr />
+            </div>
+
+        </div>
+
+        <div class="searchbox">
+            <div class="btn-group right-padding left-padding">
+                <select id="searchType" class="form-control">
+                    <option  value="track">Track</option>
+                    <option value="album">Album</option>
+                    <option value="artist">Artist</option>
+
+                </select>
+            </div>
+            <div class="span12 right-padding">
+                <form class="form-inline" >
+                    <input  ng-model="searchTerm"  class="span5  form-control" type="text"  placeholder="Michael Jackson" />
+                    <button ng-click="submit();" type="submit" class="btn btn-primary"> <i class="icon-search icon-white"></i>Go</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="results">
+            <div id="playlist" ng-show="showPlaylist">
+                <button id="export" class="btn btn-default" type="button" aria-label="Export" ng-click="exportJson();" >Export</button>
+                <label class="label label-primary">{{playlistName}} <span class="badge">{{playlist.length}}</span></label>
+                <hr />
+                <ul class="list-group">
+                    <li ng-repeat="item in playlist" class="list-group-item">
+                        <div class="playlist-item">
+                            <label class="label label-primary">{{item.name}}</label>
+                            <img src={{item.imageUrl}}>
+                            <label>{{item.note}}</label>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <ul id="song-results" class="list-group">
+                <li ng-repeat="item in displayData" class="list-group-item">
+                    <button type="button" class="list-group-item" ng-click="itemClickHandler(item)">Song: <span class="data-display">{{item.name}}</span> Artist:
+                        <span class="data-display">{{item.allArtists}}</span></button>
+
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal content-->
+
+<div id="playlist_popup" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content small">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" ng-click="resetPlaylist();">&times;</button>
+                <h4 class="modal-title">You Can Enter Upto <span class="playlist-count">10</span> songs into Playlist</h4>
+            </div>
+            <div class="modal-body form-group">
+                <label class="label label-primary">Name</label>
+                <input  class="form-control" type="text" value="Name" ng-model="playlistName"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Error Modal -->
+<script type="text/ng-template" id="errorModal.html">
+    <div class="modal-content large">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="closeErrorModal();">&times;</button>
+            <h3 class="modal-title">Cannot add Track!</h3>
+        </div>
+        <div class="modal-body">
+            Please create a playlist before trying to add song.
+        </div>
+    </div>
+</script>
+
+<!-- Add new Modal -->
+<script type="text/ng-template" id="addSong.html">
+    <div class="modal-content large">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="closeModal();">&times;</button>
+            <h3 class="modal-title">Add Note and Custom Image</h3>
+        </div>
+        <label class="label label-primary">Note</label>
+        <br/>
+        <input ng-model="track.note" type="text" class="form-control" placeholder="Enter Note">
+        <label class="label label-primary">Image</label>
+        <br />
+        <input ng-model="track.image" type="text" class="form-control" placeholder={{currentItem.album.images[0].url}} >
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addToPlaylistHandler();">Add</button>
+        </div>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="exportModal.html">
+    <div class="modal-content large">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="closeErrorModal();">&times;</button>
+            <h3 class="modal-title">Json Export</h3>
+        </div>
+        <div class="modal-body">
+            {{playlistJson}}
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal();">Close</button>
+        </div>
+    </div>
+</script>
